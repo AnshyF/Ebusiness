@@ -3,6 +3,7 @@ package main
 import (
 	router "RedRock-E-Business/api"
 	config "RedRock-E-Business/configs"
+	"RedRock-E-Business/database"
 	"context"
 	"fmt"
 
@@ -21,11 +22,11 @@ func main() {
 
 	// -------------------- 2. 初始化基础依赖 --------------------
 	// 初始化 MySQL
-	//if err := database.InitMySQL(); err != nil {
-	//	panic(fmt.Sprintf("MySQL连接失败: %v", err))
-	//}
-	//defer database.CloseMySQL() // 程序退出时关闭连接
-	//hlog.Info("MySQL连接成功")
+	if err := database.InitMySQL(); err != nil {
+		panic(fmt.Sprintf("MySQL连接失败: %v", err))
+	}
+	defer database.CloseMySQL() // 程序退出时关闭连接
+	hlog.Info("MySQL连接成功")
 
 	// 初始化 Redis
 	//if err := redis.InitRedis(); err != nil {
