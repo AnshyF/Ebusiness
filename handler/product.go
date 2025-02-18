@@ -20,7 +20,6 @@ func GetAllProductsHandler(ctx context.Context, c *app.RequestContext) {
 }
 
 // GetProductByIDHandler 处理根据商品 ID 获取商品详情的 HTTP 接口
-// GetProductByIDHandler 处理根据商品 ID 获取商品详情的 HTTP 接口
 func GetProductByIDHandler(ctx context.Context, c *app.RequestContext) {
 	// 从请求中获取商品 ID 参数
 	idStr := c.Param("id")

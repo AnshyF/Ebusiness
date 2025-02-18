@@ -2,11 +2,9 @@ package main
 
 import (
 	router "RedRock-E-Business/api"
-	config "RedRock-E-Business/configs"
 	"RedRock-E-Business/database"
 	"context"
 	"fmt"
-
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
 
@@ -15,9 +13,9 @@ import (
 
 func main() {
 	// -------------------- 1. 初始化配置 --------------------
-	if err := config.Init("./configs"); err != nil {
-		panic(fmt.Sprintf("配置加载失败: %v", err))
-	}
+	//if err := config.Init("./configs"); err != nil {
+	//	panic(fmt.Sprintf("配置加载失败: %v", err))
+	//}
 	hlog.Info("配置文件加载成功")
 
 	// -------------------- 2. 初始化基础依赖 --------------------
@@ -37,9 +35,9 @@ func main() {
 
 	// -------------------- 3. 创建 Hertz 实例 --------------------
 	h := server.New(
-		server.WithHostPorts(config.Conf.Server.Port), // 监听端口 // 使用标准网络库
-		server.WithHandleMethodNotAllowed(true),       // 允许处理 405 错误
-		server.WithDisablePrintRoute(false),           // 打印注册的路由信息（调试用）
+		server.WithHostPorts(":8080"),           // 监听端口
+		server.WithHandleMethodNotAllowed(true), // 允许处理 405 错误
+		server.WithDisablePrintRoute(false),     // 打印注册的路由信息（调试用）
 	)
 
 	// -------------------- 4. 注册全局中间件 --------------------
@@ -60,6 +58,6 @@ func main() {
 	router.RegisterRoutes(h) // 将所有路由绑定到 Hertz 实例
 
 	// -------------------- 6. 启动服务 --------------------
-	hlog.Info("服务启动，监听端口: ", config.Conf.Server.Port)
+	hlog.Info("服务启动，监听端口: 8080")
 	h.Spin()
 }

@@ -28,9 +28,9 @@ func RegisterRoutes(h *server.Hertz) {
 		// 注册根据商品 ID 获取商品详情的路由
 		productGroup.GET("/:id", handler.GetProductByIDHandler)
 	}
-	commentGroup := publicGroup.Group("/comments")
-	{
-		commentGroup.PUT("/:comment_id", handler.UpdateCommentHandler)
-		commentGroup.DELETE("/:comment_id", handler.DeleteCommentHandler)
-	}
+	//commentGroup := publicGroup.Group("/comments")
+	//{
+	//	commentGroup.PUT("/:comment_id", handler.UpdateCommentHandler)
+	//	commentGroup.DELETE("/:comment_id", handler.DeleteCommentHandler)
+	//}
 }
