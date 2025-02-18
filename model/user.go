@@ -18,8 +18,8 @@ type RegisterReq struct {
 
 // 登录请求结构体
 type LoginReq struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Identifier string `json:"identifier"`
+	Password   string `json:"password"`
 }
 
 // 登录响应结构体

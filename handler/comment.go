@@ -4,12 +4,13 @@ package handler
 import (
 	"RedRock-E-Business/service"
 	"RedRock-E-Business/utils"
+	"context"
 	"github.com/cloudwego/hertz/pkg/app"
 	"strconv"
 )
 
 // CreateCommentHandler 创建评论的 HTTP 接口
-func CreateCommentHandler(c *app.RequestContext) {
+func CreateCommentHandler(ctx context.Context, c *app.RequestContext) {
 	productIDStr := c.Param("product_id")
 	productID, err := strconv.Atoi(productIDStr)
 	if err != nil {
@@ -26,7 +27,7 @@ func CreateCommentHandler(c *app.RequestContext) {
 }
 
 // GetCommentsByProductIDHandler 根据商品 ID 获取评论列表的 HTTP 接口
-func GetCommentsByProductIDHandler(c *app.RequestContext) {
+func GetCommentsByProductIDHandler(ctx context.Context, c *app.RequestContext) {
 	productIDStr := c.Param("product_id")
 	productID, err := strconv.Atoi(productIDStr)
 	if err != nil {
@@ -42,7 +43,7 @@ func GetCommentsByProductIDHandler(c *app.RequestContext) {
 }
 
 // UpdateCommentHandler 更新评论的 HTTP 接口
-func UpdateCommentHandler(c *app.RequestContext) {
+func UpdateCommentHandler(ctx context.Context, c *app.RequestContext) {
 	commentIDStr := c.Param("comment_id")
 	commentID, err := strconv.Atoi(commentIDStr)
 	if err != nil {
@@ -59,7 +60,7 @@ func UpdateCommentHandler(c *app.RequestContext) {
 }
 
 // DeleteCommentHandler 删除评论的 HTTP 接口
-func DeleteCommentHandler(c *app.RequestContext) {
+func DeleteCommentHandler(ctx context.Context, c *app.RequestContext) {
 	commentIDStr := c.Param("comment_id")
 	commentID, err := strconv.Atoi(commentIDStr)
 	if err != nil {

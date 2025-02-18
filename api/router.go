@@ -21,16 +21,20 @@ func RegisterRoutes(h *server.Hertz) {
 			userGroup.PUT("/update", handler.UpdateUserHandler)
 		}
 	}
-	productGroup := h.Group("/api/v1/products")
+	productGroup := publicGroup.Group("/products")
 	{
 		// 注册获取所有商品列表的路由
 		productGroup.GET("/", handler.GetAllProductsHandler)
 		// 注册根据商品 ID 获取商品详情的路由
 		productGroup.GET("/:id", handler.GetProductByIDHandler)
 	}
-	//commentGroup := publicGroup.Group("/comments")
-	//{
-	//	commentGroup.PUT("/:comment_id", handler.UpdateCommentHandler)
-	//	commentGroup.DELETE("/:comment_id", handler.DeleteCommentHandler)
-	//}
+	commentGroup := publicGroup.Group("/comments")
+	{
+		// 注册给产品评论的路由
+		commentGroup.POST("/:product_id", handler.CreateCommentHandler)
+		// 注册更新产品评论的路由
+		commentGroup.PUT("/:comment_id", handler.UpdateCommentHandler)
+		// 注册删除产品评论的路由
+		commentGroup.DELETE("/:comment_id", handler.DeleteCommentHandler)
+	}
 }
