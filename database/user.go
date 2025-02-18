@@ -40,7 +40,7 @@ func UpdateUser(user *model.User) error {
 // GetUserByName 根据用户名获取用户信息
 func GetUserByName(name string) (*model.User, error) {
 	var user model.User
-	result := DB.Where("name = ?", name).First(&user)
+	result := DB.Where("username = ?", name).First(&user)
 	if result.Error != nil {
 		if result.Error == gorm.ErrRecordNotFound {
 			return nil, nil // 用户不存在

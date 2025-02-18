@@ -31,9 +31,8 @@ type LoginResp struct {
 // model/model.go
 
 type UpdateUserReq struct {
-	gorm.Model
 	Username string `gorm:"uniqueIndex;size:50" json:"username"` // 唯一索引
-	Password string `gorm:"not null" json:"-"`                   // 不序列化到JSON
+	Password string `gorm:"not null" json:"-" vd:"len($)>6"`     // 不序列化到JSON
 	Email    string `gorm:"uniqueIndex;size:100" json:"email"`   // 唯一邮箱
 
 }
